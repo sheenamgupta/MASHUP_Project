@@ -1,4 +1,4 @@
-var map1, map2, map3;
+var map,map1, map2, map3;
 function initialize()
 {
     var mapOptions1={
