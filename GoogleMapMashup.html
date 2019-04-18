@@ -1,0 +1,62 @@
+Google Maps Mashup Starter Code:
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<style>
+		#map {
+			height: 100%;
+		}
+		/* Optional: Makes the sample page fill the window. */
+		html, body {
+			height: 100%;
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+</head> 
+<body>
+<div id="map">my map</div>
+<script>
+	var map;
+	var aboutMe = [
+		{"city":"Yellowstone","coords":[44.4280,-110.5885]},
+		{"city":"Glacier","coords":[48.7596, -113.7870]},
+        {"city":"Toronto","coords":[43.735879,280.434794]},
+        {"city":"Winnipeg","coords":[49.664517,262.974169]},
+		{"city":"Chicago","coords":[41.833247,272.440647]},
+		{"city":"Paris","coords":[43.170694,279.626770]},
+		];
+
+	function initMap() {
+		map = new google.maps.Map(document.getElementById('map'), {
+			zoom: 4,
+			center: new google.maps.LatLng(44, -110),
+			mapTypeId: 'terrain'
+		});
+
+		mashParks(aboutMe);
+	}
+
+	function mashParks(results) {
+	for (var i = 0; i < results.length; i++) {
+		var coords = results[i].coords;
+		var latLng = new google.maps.LatLng(coords[0], coords[1]);
+		var marker = new google.maps.Marker({
+			position: latLng,
+			map: map,
+			label:results[i].city
+			});
+		}
+	}
+
+
+
+</script>
+<script async defer
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDTM5RKrtCLpZAj5HU3K3cTvFNB240NsBg&callback=initMap">
+</script>
+</body>
+</html>
